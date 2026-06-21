@@ -1,0 +1,29 @@
+{
+  "skill_name": "meal-prep",
+  "evals": [
+    {
+      "id": 0,
+      "name": "cold-start-vegetarian-week",
+      "prompt": "I want to start meal prepping. Can you plan dinners for this week and make me a grocery list? It's just me and my partner, we're vegetarian, I really can't stand mushrooms, and on weeknights I've only got about 30 minutes to actually cook.",
+      "expected_output": "Sets up a profile (2 servings, vegetarian, no mushrooms, 30-min weeknights), creates the data dir + config, plans ~7 vegetarian dinners with no mushrooms anywhere and weeknight-appropriate times, saves each new recipe to recipes/ following the template, writes a dated plan to plans/, and produces a grocery list consolidated and grouped by store section.",
+      "files": [],
+      "assertions": []
+    },
+    {
+      "id": 1,
+      "name": "like-recipe-and-replan",
+      "prompt": "We made the Lemon-Garlic Chicken Thighs from my recipes last week and absolutely loved it — mark it as a favorite. Then plan 5 dinners for next week and work that one back in.",
+      "expected_output": "Finds the existing recipe, sets liked: true in its frontmatter and adds a star in index.md, then plans exactly 5 dinners that include the lemon-garlic chicken, reads the existing profile/DB, fills remaining slots from existing or new recipes, and outputs a grocery list. Pre-populated data dir provided as input.",
+      "files": ["fixtures/warm-start/profile.md", "fixtures/warm-start/recipes/index.md", "fixtures/warm-start/recipes/lemon-garlic-chicken-thighs.md", "fixtures/warm-start/recipes/beef-chili.md", "fixtures/warm-start/recipes/shrimp-tacos.md"],
+      "assertions": []
+    },
+    {
+      "id": 2,
+      "name": "ingredient-reuse-family-of-four",
+      "prompt": "Plan 7 dinners for my family of 4. I want recipes that share ingredients so I'm not throwing out half a bunch of cilantro or a lonely can of coconut milk — minimize waste and overlap where you can. Give me the shopping list grouped by aisle.",
+      "expected_output": "Plans 7 dinners scaled to 4 servings, deliberately overlapping ingredients across recipes to reduce waste, and produces a grocery list that consolidates shared ingredients into single combined quantities, grouped by store section, with staples flagged separately. Saves recipes and plan to the data dir.",
+      "files": [],
+      "assertions": []
+    }
+  ]
+}
